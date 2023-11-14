@@ -1,19 +1,62 @@
 {
-    "name": "Hello, World!",
     "id": "hello",
-    "version": "1.0.2",
-    "description": "A hello world feature",
+    "version": "1.0.0",
+    "name": "Docker (Docker-in-Docker) real",
+    "documentationURL": "https://github.com/worthy7/docker-in-docker-real",
+    "description": "Create child containers *inside* a container, independent from the host's docker instance. Installs Docker extension in the container along with needed CLIs.",
     "options": {
-        "greeting": {
+        "version": {
             "type": "string",
             "proposals": [
-                "hey",
-                "hello",
-                "hi",
-                "howdy"
+                "latest",
+                "none",
+                "20.10"
             ],
-            "default": "hey",
-            "description": "Select a pre-made greeting, or enter your own"
+            "default": "latest",
+            "description": "Select or enter a Docker/Moby Engine version. (Availability can vary by OS version.)"
+        },
+        "moby": {
+            "type": "boolean",
+            "default": true,
+            "description": "Install OSS Moby build instead of Docker CE"
+        },
+        "dockerDashComposeVersion": {
+            "type": "string",
+            "enum": [
+                "none",
+                "v1",
+                "v2"
+            ],
+            "default": "v1",
+            "description": "Default version of Docker Compose (v1 or v2 or none)"
+        },
+        "azureDnsAutoDetection": {
+            "type": "boolean",
+            "default": true,
+            "description": "Allow automatically setting the dockerd DNS server when the installation script detects it is running in Azure"
+        },
+        "dockerDefaultAddressPool": {
+            "type": "string",
+            "default": "",
+            "proposals": [],
+            "description": "Define default address pools for Docker networks. e.g. base=192.168.0.0/16,size=24"
+        },
+        "installDockerBuildx": {
+            "type": "boolean",
+            "default": true,
+            "description": "Install Docker Buildx"
+        }
+    },
+    "entrypoint": "/usr/local/share/docker-init.sh",
+    "privileged": true,
+    "containerEnv": {
+        "DOCKER_BUILDKIT": "1"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-docker"
+            ]
         }
     },
     "installsAfter": [
