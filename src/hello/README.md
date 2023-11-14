@@ -1,7 +1,7 @@
 
-# Hello, World! (hello)
+# Docker (Docker-in-Docker) real (hello)
 
-A hello world feature
+Create child containers *inside* a container, independent from the host's docker instance. Installs Docker extension in the container along with needed CLIs.
 
 ## Example Usage
 
@@ -15,7 +15,18 @@ A hello world feature
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| greeting | Select a pre-made greeting, or enter your own | string | hey |
+| version | Select or enter a Docker/Moby Engine version. (Availability can vary by OS version.) | string | latest |
+| moby | Install OSS Moby build instead of Docker CE | boolean | true |
+| dockerDashComposeVersion | Default version of Docker Compose (v1 or v2 or none) | string | v1 |
+| azureDnsAutoDetection | Allow automatically setting the dockerd DNS server when the installation script detects it is running in Azure | boolean | true |
+| dockerDefaultAddressPool | Define default address pools for Docker networks. e.g. base=192.168.0.0/16,size=24 | string | - |
+| installDockerBuildx | Install Docker Buildx | boolean | true |
+
+## Customizations
+
+### VS Code Extensions
+
+- `ms-azuretools.vscode-docker`
 
 
 
