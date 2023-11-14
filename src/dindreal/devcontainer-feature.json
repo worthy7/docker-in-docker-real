@@ -1,6 +1,6 @@
 {
     "name": "DinD real",
-    "id": "docker-in-docker-real",
-    "version": "1.0.3",
+    "id": "dindr",
+    "version": "1.0.0",
     "description": "A feature to remind you of your favorite color"
 }
